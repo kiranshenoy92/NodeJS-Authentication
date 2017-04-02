@@ -1,0 +1,125 @@
+
+<!--<div class="container-fluid">
+	 <form action="/user/signup" method="post" class="register-form"> 
+     <h1>Register</h1> 
+      
+      <div class="row">      
+           <div class="col-md-4 col-sm-4 col-lg-4">
+              <label for="firstName">FIRST NAME</label>
+               <input name="firstName" class="form-control" type="text" placeholder="First Name"> 
+           </div>            
+      </div>
+      <div class="row">      
+           <div class="col-md-4 col-sm-4 col-lg-4">
+              <label for="firstName">LAST NAME</label>
+               <input name="lastName" class="form-control" type="text" placeholder="Last Name">    
+           </div>            
+      </div>
+      <div class="row">      
+           <div class="col-md-4 col-sm-4 col-lg-4">
+              <label for="employeeID">EMPLOYEE ID</label>
+               <input name="employeeID" class="form-control" type="text" placeholder="Employee ID">    
+           </div>            
+      </div>
+      <div class="row">      
+           <div class="col-md-4 col-sm-4 col-lg-4">
+              <label for="employeeID">EMPLOYEE ID</label>
+               <input name="employeeID" class="form-control" type="text" placeholder="Employee ID">    
+           </div>            
+      </div>
+      <div class="row">
+           <div class="col-md-4 col-sm-4 col-lg-4">
+              <label for="email">EMAIL</label>
+               <input name="email" class="form-control" type="email" placeholder="Email">             
+           </div>            
+      </div>
+      <div class="row">
+           <div class="col-md-4 col-sm-4 col-lg-4">
+              <label for="password">PASSWORD</label>
+               <input name="password" class="form-control" type="password" placeholder="Password">             
+           </div>            
+      </div>
+
+        {{#if hasError}}
+      <div class="row">
+           <div class="col-md-12 col-sm-12 col-lg-12">
+               <div class="alert alert-danger">
+                    {{messages}}
+               </div>
+          </div>          
+      </div>   
+        {{/if}}
+
+      <hr>
+      <div class="row">
+           <div class="col-md-12 col-sm-12 col-lg-12">
+                <button class="btn btn-default regbutton">Register</button>
+          </div>
+          <!--<div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
+                <button class="btn btn-default logbutton">Sign up</button>           
+          </div>
+          <input name="_csrf" class="form-control" type="hidden" value="{{ csrfToken }}">            
+      </div>    
+    </form>
+</div>--> 
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-8 col-xs-offset-2 col-sm-offset-3  col-md-offset-3 col-lg-offset-4">
+            <form action="/user/signup" method="post" class="form-horizontal registerform" id="submitForm"> 
+                <legend><h1>Register</h1></legend>
+                <fieldset>
+                    {{#if hasError}}
+                    
+                        <div class="form-group">
+                            <div class="alert alert-danger">
+                                    {{messages}}
+                            </div>
+                        </div>          
+                    {{/if}}
+                    <div class="form-group">
+                        <label for="firstName" class="control-label">FIRST NAME</label>
+                        <input id="firstName" type="text" name="firstName" class="form-control" placeholder="First Name" />
+                        <span id="firstNamemessage"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName" class="control-label">LAST NAME</label>
+                        <input id="lastName" type="text" name="lastName" class="form-control" placeholder="Last Name" />
+                        <span id="lastNamemessage"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="employeeID" class="control-label">EMPLOYEE ID</label>
+                        <input id="employeeID" name="employeeID" class="form-control" type="text" placeholder="Employee ID" autocomplete="Off">    
+                        <span id="employeeIDmessage"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="control-label">EMAIL</label>
+                        <input id="email" name="email" class="form-control" type="email" placeholder="Email">
+                        <span id="emailmessage"></span>  
+                    </div>
+                    <div class="form-group  ">
+                        <label for="password" class="control-label">PASSOWRD</label>
+                        <input id="password" name="password" class="form-control" type="password" placeholder="Password" autocomplete="Off">
+                        <span id="passwordmessage"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword" class="control-label">CONFIRM PASSOWRD</label>
+                       <input id="confirmPassword" name="confirmPassword" class="form-control" type="password" placeholder="Retype Password" autocomplete="Off">    
+                        <span id="confirmPasswordmessage"></span><br/>
+                        <span id="message"></span>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <button class="btn btn-default registerbutton">REGISTER</button>
+                    </div>
+                    <div>
+                        <input name="_csrf" class="form-control" type="hidden" value="{{ csrfToken }}">      
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/javascripts/signup.js "></script>
