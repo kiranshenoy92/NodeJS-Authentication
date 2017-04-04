@@ -31,7 +31,7 @@ router.get('/signup', (req, res, next) => {
 });
 //route for logiin page
 router.get('/login', (req, res, next) => {
-  res.render('login',{title: 'User Profile',csrfToken: req.csrfToken(),isLoggedIn: req.isAuthenticated()})
+  res.render('login',{title: 'User Profile',csrfToken: req.csrfToken()})
 });
 
 //called when user signs up
@@ -42,9 +42,19 @@ router.post('/signup',passport.authenticate('local-signup',{
 
 //called when user logs in
 router.post('/login',passport.authenticate('local-login',{	
-  successRedirect : '/user/profile',
+  successRedirect : '/user/success',
 	failureRedirect : '/user/login',
 }));
+
+router.get('/success', isLoggedIn, (req,res,next) => {
+  if(req.session.redirectTo){
+    var redirectPath = req.session.redirectTo;
+    delete req.session.redirectTo;
+    res.redirect(redirectPath);
+  } else {
+    res.redirect('/');
+  }
+})
 
 //route to display user profile 
 //displays only if user is logged in
@@ -56,7 +66,6 @@ router.get('/profile',isLoggedIn, (req, res, next) => {
 
 router.get('/logout',isLoggedIn,(req,res, next) => {
 	req.logout();
-	console.log("user logged out")
 	res.redirect('/')
 });
 

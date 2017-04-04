@@ -34,7 +34,19 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({secret:'mysecret',resave: false, saveUninitialized: false}));
+app.use(session({
+  secret:'mysecret',
+  resave: false, 
+  saveUninitialized: false,
+  rolling: true,
+  cookie: {
+    path: '/',
+    httpOnly: true,
+    secure: false,
+    maxAge : 10000 ,
+    signed: false
+  }
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
