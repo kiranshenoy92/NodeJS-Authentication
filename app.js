@@ -43,7 +43,7 @@ app.use(session({
     path: '/',
     httpOnly: true,
     secure: false,
-    maxAge : 10000 ,
+    maxAge : 1000000 ,
     signed: false
   }
 }));

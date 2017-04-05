@@ -32,25 +32,57 @@ passport.use('local-signup', new LocalStrategy({
             if(user){
                 return done(null,false,req.flash('info', "Email is already registered!!"));
             } else {
-                console.log(req.body);
+                
                 var firstName  = toUpperFisrtChar(req.body.firstName.toLowerCase());
                 var lastName   =  toUpperFisrtChar(req.body.lastName.toLowerCase());
                 var employeeID = req.body.employeeID;
-
-
-                var newUser = new User();
-                newUser.firstName  = firstName;
-                newUser.lastName   = lastName;
-                newUser.password   = newUser.hashPassword(password);
-                newUser.email      = email;
-                newUser.employeeID = employeeID;
                 
-                newUser.save((err)=>{
-                    if(err){
-                        console.log(err);
+                var error = '';
+                if(firstName == ''){
+                    error = error + 'First Name';
+                }
+                if(lastName ==''){
+                    if(error !=''){
+                        error = error + ',';
                     }
-                    return done(null,newUser);
-                })
+                    error =  error + 'Last Name';
+                }
+                if(employeeID ==''){
+                    if(error !=''){
+                        error = error + ',';
+                    }
+                    error = error + 'Employee ID';
+                }
+                if(email ==''){
+                    if(error !=''){
+                        error = error + ',';
+                    }
+                    error =  error + 'Email';
+                }
+                if(password ==''){
+                    if(error !=''){
+                        error = error + ',';
+                    }
+                    error = error + 'Password';
+                }
+                if(error!=''){
+                    error = error +' is required!!'
+                    return done(null,false,req.flash('info', error));
+                }else{
+                    var newUser = new User();
+                    newUser.firstName  = firstName;
+                    newUser.lastName   = lastName;
+                    newUser.password   = newUser.hashPassword(password);
+                    newUser.email      = email;
+                    newUser.employeeID = employeeID;
+                    
+                    newUser.save((err)=>{
+                        if(err){
+                            console.log(err);
+                        }
+                        return done(null,newUser);
+                    })
+                }
             }
         })
     })

@@ -156,6 +156,16 @@ code {
     margin-left: 10px;
 }
 
+i{
+    color: black;
+    margin-top: 4px;
+}
+
+
+ #password + .glyphicon {
+   cursor: pointer;
+   pointer-events: all;
+ }
 
 .register-form{
     font-size: 16px;
