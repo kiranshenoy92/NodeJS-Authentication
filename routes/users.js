@@ -31,7 +31,11 @@ router.get('/signup', (req, res, next) => {
 });
 //route for logiin page
 router.get('/login', (req, res, next) => {
-  res.render('login',{title: 'User Profile',csrfToken: req.csrfToken()})
+  var errorMessage = req.flash('info')
+  res.render('login',{title: 'User Profile',
+                      csrfToken: req.csrfToken(),
+                      messages: errorMessage, 
+                      hasError: errorMessage.length > 0 })
 });
 
 //called when user signs up

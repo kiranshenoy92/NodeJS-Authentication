@@ -100,10 +100,10 @@ passport.use('local-login', new LocalStrategy({
                 return done(err);
             }
             if(!user){
-                return done(null,false)
+                return done(null,false,req.flash('info', "No user found"))
             }
-            if(user.comparePassword(password)){
-                return done(null,false);
+            if(!user.comparePassword(password)){
+                return done(null,false,req.flash('info', "Wrong password!!"));
             }
             return done(null,user);
         })    
