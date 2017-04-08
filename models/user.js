@@ -24,6 +24,15 @@ var User = new userSchema({
         type: String,
         required: true,
         unique: true
+    },
+    active : {
+        type: Boolean,
+        required : true,
+        default: false
+    },
+    token : {
+        type : String,
+        required : true
     }
 })
 

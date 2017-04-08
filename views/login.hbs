@@ -12,6 +12,13 @@
                             </div>
                         </div>          
                     {{/if}}
+                    {{#if active}}    
+                        <div class="form-group">
+                            <div class="alert alert-success">
+                                    {{active}}
+                            </div>
+                        </div>          
+                    {{/if}}
                     <div class="form-group">
                         <label for="email" class="control-label">EMAIL</label>
                         <input id="email" type="email" name="email" class="form-control" placeholder="Email" />
