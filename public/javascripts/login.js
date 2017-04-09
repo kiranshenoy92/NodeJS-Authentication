@@ -7,3 +7,16 @@ $("#loginform").submit(function(event) {
         }
     })   
 })
+
+var togglePassword = () =>  {
+    if($("#password").attr('type')=='password'){
+        $("#password").attr('type','text');
+    } else {
+        $("#password").attr('type','password');
+    }
+}
+
+$('#password + .glyphicon').on('click', function() {
+  $(this).toggleClass('glyphicon-eye-close').toggleClass('glyphicon-eye-open'); // toggle our classes for the eye icon
+  togglePassword(); // activate the hideShowPassword plugin
+});

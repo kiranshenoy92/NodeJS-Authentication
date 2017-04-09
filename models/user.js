@@ -33,6 +33,9 @@ var User = new userSchema({
     token : {
         type : String,
         required : true
+    },
+    resetpwdtoken : {
+        type : String
     }
 })
 
